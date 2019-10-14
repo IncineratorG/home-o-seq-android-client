@@ -3,8 +3,10 @@ package com.touristskaya.homeoseqandroidclient.services.communication.firebase;
 
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
 import com.touristskaya.homeoseqandroidclient.services.communication.CommunicationServiceState;
 import com.touristskaya.homeoseqandroidclient.services.communication.common.TransmissionService;
+import com.touristskaya.homeoseqandroidclient.services.communication.tasks.FirebaseCommunicationServiceTask;
 import com.touristskaya.homeoseqandroidclient.stores.common.State;
 
 public class FirebaseCommunicationService implements TransmissionService {
@@ -18,6 +20,8 @@ public class FirebaseCommunicationService implements TransmissionService {
 
     private CommunicationServiceState mState;
 
+    private FirebaseCommunicationServiceTask mServiceTask;
+
 
     public FirebaseCommunicationService(State state) {
         mState = (CommunicationServiceState) state;
@@ -29,10 +33,13 @@ public class FirebaseCommunicationService implements TransmissionService {
     }
 
     @Override
-    public void start() {
+    public void start(Object params) {
         String METHOD_NAME = ".start()";
 
         Log.d(TAG, CLASS_NAME + METHOD_NAME);
+
+        mServiceTask = new FirebaseCommunicationServiceTask();
+        mServiceTask.execute();
     }
 
     @Override
@@ -40,6 +47,8 @@ public class FirebaseCommunicationService implements TransmissionService {
         String METHOD_NAME = ".stop()";
 
         Log.d(TAG, CLASS_NAME + METHOD_NAME);
+
+        mServiceTask.cancel(true);
     }
 
     @Override

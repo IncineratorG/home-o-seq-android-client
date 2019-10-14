@@ -1,9 +1,13 @@
 package com.touristskaya.homeoseqandroidclient.stores.communication;
 
+import android.app.Activity;
+import android.util.Log;
+
 import com.touristskaya.homeoseqandroidclient.services.Services;
 import com.touristskaya.homeoseqandroidclient.services.communication.CommunicationService;
 import com.touristskaya.homeoseqandroidclient.stores.common.Action;
 import com.touristskaya.homeoseqandroidclient.stores.common.ActionsFactory;
+import com.touristskaya.homeoseqandroidclient.stores.common.Payload;
 import com.touristskaya.homeoseqandroidclient.stores.common.State;
 import com.touristskaya.homeoseqandroidclient.stores.common.Store;
 
@@ -61,7 +65,21 @@ public class CommunicationStore extends Store {
 
 
     private void startCommunicationServiceReducer(Action action) {
-        mCommunicationService.start();
+        if (!(action.getPayload() instanceof Payload)) {
+            Log.d(TAG, "CommunicationStore.startCommunicationServiceReducer()->BAD_PAYLOAD");
+            return;
+        }
+
+        Payload payload = (Payload) action.getPayload();
+        Activity activity = null;
+        if (payload.get("activity") instanceof Activity) {
+            activity = (Activity) payload.get("activity");
+        } else {
+            Log.d(TAG, "CommunicationStore.startCommunicationServiceReducer()->BAD_PAYLOAD_DATA");
+            return;
+        }
+
+        mCommunicationService.start(activity);
     }
 
     private void stopCommunicationServiceReducer(Action action) {
