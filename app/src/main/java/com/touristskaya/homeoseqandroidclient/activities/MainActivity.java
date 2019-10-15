@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.touristskaya.homeoseqandroidclient.R;
+import com.touristskaya.homeoseqandroidclient.services.Services;
+import com.touristskaya.homeoseqandroidclient.services.communication.CommunicationService;
 import com.touristskaya.homeoseqandroidclient.services.communication.firebase.FirebaseCommunicationAndroidService;
 import com.touristskaya.homeoseqandroidclient.stores.Stores;
 import com.touristskaya.homeoseqandroidclient.stores.common.Action;
@@ -96,6 +98,17 @@ public class MainActivity extends AppCompatActivity {
 
             ++mCounter;
         });
+//        mButton.setOnClickListener((view) -> {
+//            if (mCounter % 2 > 0) {
+//                CommunicationService communicationService = (CommunicationService) Services.getInstance().getService(Services.CommunicationService);
+//                communicationService.sendSerializedString("ONE");
+//            } else {
+//                CommunicationService communicationService = (CommunicationService) Services.getInstance().getService(Services.CommunicationService);
+//                communicationService.sendSerializedString("TWO");
+//            }
+//
+//            ++mCounter;
+//        });
 
         mCommunicationStore = (CommunicationStore) Stores.getInstance().getStore(Stores.CommunicationStore);
         mCommunicationState = (CommunicationState) mCommunicationStore.getState();

@@ -39,6 +39,8 @@ public class FirebaseCommunicationAndroidService extends Service {
 
 
     public FirebaseCommunicationAndroidService() {
+        Log.d(TAG, "IN_CONSTRUCTOR");
+
         mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -98,7 +100,7 @@ public class FirebaseCommunicationAndroidService extends Service {
         String METHOD_NAME = ".onStartCommand()";
         Log.d(TAG, CLASS_NAME + METHOD_NAME);
 
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     @Override
