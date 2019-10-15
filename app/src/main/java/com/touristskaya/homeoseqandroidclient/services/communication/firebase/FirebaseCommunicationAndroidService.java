@@ -98,7 +98,7 @@ public class FirebaseCommunicationAndroidService extends Service {
         String METHOD_NAME = ".onStartCommand()";
         Log.d(TAG, CLASS_NAME + METHOD_NAME);
 
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
