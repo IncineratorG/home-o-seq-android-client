@@ -34,7 +34,8 @@ public class FirebaseCommunicationAndroidService extends Service {
 
     public static FirebaseCommunicationAndroidService mInstance = null;
     private DatabaseReference mFirebaseDatabase;
-    ValueEventListener mValueEventListener;
+    private String TEST_FIELD = "TEST_FIELD";
+    private ValueEventListener mValueEventListener;
 
 
     public FirebaseCommunicationAndroidService() {
@@ -62,7 +63,7 @@ public class FirebaseCommunicationAndroidService extends Service {
 
         mInstance = this;
 
-        String TEST_FIELD = "TEST_FIELD";
+        FirebaseDatabase.getInstance().goOnline();
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
         mFirebaseDatabase.child(TEST_FIELD).addValueEventListener(mValueEventListener);
 
@@ -107,7 +108,8 @@ public class FirebaseCommunicationAndroidService extends Service {
         String METHOD_NAME = ".onDestroy()";
         Log.d(TAG, CLASS_NAME + METHOD_NAME);
 
-//        FirebaseDatabase.getInstance().goOffline();
+        mFirebaseDatabase.child(TEST_FIELD).removeEventListener(mValueEventListener);
+        FirebaseDatabase.getInstance().goOffline();
 
         mInstance = null;
     }
