@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
+import com.touristskaya.homeoseqandroidclient.common.SerializationHelper;
 import com.touristskaya.homeoseqandroidclient.services.communication.CommunicationServiceState;
 import com.touristskaya.homeoseqandroidclient.services.communication.common.TransmissionService;
-import com.touristskaya.homeoseqandroidclient.stores.common.State;
+import com.touristskaya.homeoseqlib.redux.State;
+import com.touristskaya.homeoseqlib.states.server.ServerCommunicationState;
 
 public class FirebaseCommunicationService implements TransmissionService {
     private static final String TAG = "tag";
@@ -20,14 +22,26 @@ public class FirebaseCommunicationService implements TransmissionService {
 
     private Activity mFirebaseAndroidServiceLaunchingActivity;
     private FirebaseCommunicationAndroidService mFirebaseAndroidService;
-    private FirebaseServiceBus mServiceBus;
 
     private CommunicationServiceState mState;
 
 
     public FirebaseCommunicationService(State state) {
         mState = (CommunicationServiceState) state;
-        mServiceBus = FirebaseServiceBus.getInstance();
+        FirebaseServiceState.mClientSerializedState.subscribe(() -> {
+//           Log.d(TAG, CLASS_NAME + "->CLIENT_SERIALIZED_STATE: " + FirebaseServiceState.mClientSerializedState.get());
+
+            String serializedState = FirebaseServiceState.mClientSerializedState.get();
+
+            ServerCommunicationState deserializedServerState = (ServerCommunicationState) SerializationHelper.objectFromString(serializedState);
+            if (deserializedServerState == null) {
+                Log.d(TAG, "DESERIALIZED_STATE_IS_NULL");
+                return;
+            }
+
+            Log.d(TAG, "DESERIALISED_STATE_STRING: " + deserializedServerState.serverState.get());
+            Log.d(TAG, "DESERIALIZED_TIME_STAMP: " + deserializedServerState.timestamp.get());
+        });
     }
 
     @Override

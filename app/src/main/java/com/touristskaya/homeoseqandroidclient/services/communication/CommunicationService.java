@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.touristskaya.homeoseqandroidclient.services.communication.common.TransmissionService;
 import com.touristskaya.homeoseqandroidclient.services.communication.firebase.FirebaseCommunicationService;
-import com.touristskaya.homeoseqandroidclient.stores.common.State;
+import com.touristskaya.homeoseqlib.redux.State;
 
 public class CommunicationService implements TransmissionService {
     private static final String TAG = "tag";

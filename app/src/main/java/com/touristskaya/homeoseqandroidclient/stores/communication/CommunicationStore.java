@@ -5,11 +5,11 @@ import android.util.Log;
 
 import com.touristskaya.homeoseqandroidclient.services.Services;
 import com.touristskaya.homeoseqandroidclient.services.communication.CommunicationService;
-import com.touristskaya.homeoseqandroidclient.stores.common.Action;
-import com.touristskaya.homeoseqandroidclient.stores.common.ActionsFactory;
-import com.touristskaya.homeoseqandroidclient.stores.common.Payload;
-import com.touristskaya.homeoseqandroidclient.stores.common.State;
-import com.touristskaya.homeoseqandroidclient.stores.common.Store;
+import com.touristskaya.homeoseqlib.redux.Action;
+import com.touristskaya.homeoseqlib.redux.ActionsFactory;
+import com.touristskaya.homeoseqlib.redux.Payload;
+import com.touristskaya.homeoseqlib.redux.State;
+import com.touristskaya.homeoseqlib.redux.Store;
 
 /**
  * TODO: Add a class header comment

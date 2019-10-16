@@ -1,6 +1,6 @@
 package com.touristskaya.homeoseqandroidclient.services.common;
 
-import com.touristskaya.homeoseqandroidclient.stores.common.State;
+import com.touristskaya.homeoseqlib.redux.State;
 
 public interface DaemonService extends Service {
     void start(Object params);

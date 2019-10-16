@@ -1,7 +1,7 @@
 package com.touristskaya.homeoseqandroidclient.stores;
 
-import com.touristskaya.homeoseqandroidclient.stores.common.Store;
 import com.touristskaya.homeoseqandroidclient.stores.communication.CommunicationStore;
+import com.touristskaya.homeoseqlib.redux.Store;
 
 /**
  * TODO: Add a class header comment

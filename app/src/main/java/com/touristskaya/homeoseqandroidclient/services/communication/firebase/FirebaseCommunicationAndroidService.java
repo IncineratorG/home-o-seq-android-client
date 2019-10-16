@@ -49,7 +49,7 @@ public class FirebaseCommunicationAndroidService extends Service {
                     return;
                 }
 
-                Log.d(TAG, "MESSAGE_NOT_NULL: " + dataSnapshot.getValue().toString());
+                FirebaseServiceState.mClientSerializedState.set(dataSnapshot.getValue().toString());
             }
 
             @Override
