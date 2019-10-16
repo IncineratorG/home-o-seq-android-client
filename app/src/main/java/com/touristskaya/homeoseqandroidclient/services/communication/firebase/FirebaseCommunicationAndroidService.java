@@ -39,6 +39,8 @@ public class FirebaseCommunicationAndroidService extends Service {
 
 
     public FirebaseCommunicationAndroidService() {
+        Log.d(TAG, "IN_CONSTRUCTOR");
+
         mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -47,7 +49,7 @@ public class FirebaseCommunicationAndroidService extends Service {
                     return;
                 }
 
-                Log.d(TAG, "MESSAGE_NOT_NULL: " + dataSnapshot.getValue().toString());
+                FirebaseServiceState.mClientSerializedState.set(dataSnapshot.getValue().toString());
             }
 
             @Override

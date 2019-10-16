@@ -1,10 +1,10 @@
 package com.touristskaya.homeoseqandroidclient.stores.communication;
 
-import com.touristskaya.homeoseqandroidclient.stores.common.Action;
-import com.touristskaya.homeoseqandroidclient.stores.common.ActionsFactory;
 import com.touristskaya.homeoseqandroidclient.stores.communication.actions.BindCommunicationServiceStateAction;
 import com.touristskaya.homeoseqandroidclient.stores.communication.actions.StartCommunicationServiceAction;
 import com.touristskaya.homeoseqandroidclient.stores.communication.actions.StopCommunicationServiceAction;
+import com.touristskaya.homeoseqlib.redux.Action;
+import com.touristskaya.homeoseqlib.redux.ActionsFactory;
 
 /**
  * TODO: Add a class header comment

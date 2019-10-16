@@ -1,7 +1,7 @@
 package com.touristskaya.homeoseqandroidclient.stores.communication.actions;
 
-import com.touristskaya.homeoseqandroidclient.stores.common.Action;
 import com.touristskaya.homeoseqandroidclient.stores.communication.CommunicationActionsFactory;
+import com.touristskaya.homeoseqlib.redux.Action;
 
 /**
  * TODO: Add a class header comment
